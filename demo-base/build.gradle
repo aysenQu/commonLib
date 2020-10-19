@@ -3,5 +3,6 @@ apply plugin: 'com.android.library'
 apply from : rootProject.file("config/base.gradle")
 
 dependencies {
-    api project(":lib-router")
+//    api project(":lib-router")
+    api 'com.github.aysenQu:commonLib:1.0.0-alpha'
 }
