@@ -1,0 +1,80 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    signingConfigs {
+        release {
+            keyAlias 'aysen'
+            keyPassword '12345678'
+            storeFile file('../aysen.jks')
+            storePassword '12345678'
+        }
+        debug {
+            keyAlias 'aysen'
+            keyPassword '12345678'
+            storeFile file('../aysen.jks')
+            storePassword '12345678'
+        }
+    }
+
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        manifestPlaceholders = rootProject.ext.manifestPlaceholders
+        multiDexEnabled true
+        ndk {
+            abiFilters "armeabi-v7a"/*,"arm64-v8a"*/
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            jniDebuggable true
+            signingConfig signingConfigs.release
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility rootProject.ext.android.sourceCompatibility
+        targetCompatibility rootProject.ext.android.targetCompatibility
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+repositories {
+    flatDir {
+        dirs 'libs','../libs'
+    }
+}
+
+dependencies{
+    api fileTree(include: ['*.jar'], dir: 'libs')
+}

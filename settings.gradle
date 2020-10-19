@@ -1,0 +1,4 @@
+include ':demo-base'
+include ':lib-router'
+include ':app'
+rootProject.name = "AysenLib"
