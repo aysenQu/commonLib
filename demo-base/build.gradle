@@ -4,5 +4,6 @@ apply from : rootProject.file("config/base.gradle")
 
 dependencies {
 //    api project(":lib-router")
-    api 'com.github.aysenQu:commonLib:1.0.0-alpha'
+//    api 'com.github.aysenQu:commonLib:1.0.0-alpha'
+    api 'com.aysen.lib:router:1.0.0-alphau'
 }

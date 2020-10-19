@@ -3,10 +3,11 @@
   <groupId>com.aysen.lib</groupId>
   <artifactId>router</artifactId>
   <versioning>
-    <release>1.0.0-alpha</release>
+    <release>1.0.0</release>
     <versions>
       <version>1.0.0-alpha</version>
+      <version>1.0.0</version>
     </versions>
-    <lastUpdated>20201019021850</lastUpdated>
+    <lastUpdated>20201019055425</lastUpdated>
   </versioning>
 </metadata>
